@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class HomePage {
@@ -50,5 +51,26 @@ public class HomePage {
         sweater.click();
     }
 
+    public void checkDiscount() {
 
+        List<WebElement> regularPrice = driver.findElements(By.cssSelector("span.regular-price"));
+        List<WebElement> price = driver.findElements(By.cssSelector("span.price"));
+
+        String regular = regularPrice.get(1).getText().substring(1);
+        String firstprice = price.get(1).getText().substring(1);
+
+        //System.out.println(regular +" "+ firstprice);
+
+        double num1 = Double.parseDouble(regular);
+        double num2 = Double.parseDouble(firstprice);
+
+        //System.out.println(num1);
+        //System.out.println(num2);
+
+        if (num1 * 0.8 == num2) {
+            System.out.println("Price is reduced");
+        } else {
+            System.out.println("Wrong price");
+        }
+    }
 }

@@ -18,13 +18,13 @@ public class Main01 {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://mystore-testlab.coderslab.pl/index.php?controller=my-account");
+        driver.get("https://mystore-testlab.coderslab.pl/index.php");
         HomePage onHomePage = new HomePage(driver);
-        onHomePage.clickSignIn();
+        /* onHomePage.clickSignIn();
         SignInPage onSignInPage = new SignInPage(driver);
         onSignInPage.logIn();
         driver.get("https://mystore-testlab.coderslab.pl/index.php?controller=addresses");
-        AddressesPage onAddressesPage = new AddressesPage(driver);
-
+        AddressesPage onAddressesPage = new AddressesPage(driver);*/
+        onHomePage.checkDiscount();
     }
 }

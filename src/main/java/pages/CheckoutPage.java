@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class CheckoutPage {
     private WebDriver driver;
@@ -17,6 +18,8 @@ public class CheckoutPage {
     }
 
     public void chooseDelivery() {
+        //WebElement pickUpInStore = driver.findElement(By.id("delivery_option_1"));
+        //WebElement deliveryNextDay = driver.findElement(By.id("delivery_option_2"));
         WebElement deliveryContinue = driver.findElement(By.name("confirmDeliveryOption"));
         deliveryContinue.click();
     }

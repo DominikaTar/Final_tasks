@@ -3,6 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+
+import java.util.List;
 
 public class SweaterPage {
     private WebDriver driver;
@@ -11,11 +15,10 @@ public class SweaterPage {
         this.driver = driver;
     }
 
-    public void chooseSizeM() {
-        WebElement sizeButton = driver.findElement(By.id("group_1"));
-        sizeButton.click();
-        WebElement sizeM = driver.findElement(By.xpath("//*[text() = 'M']"));
-        sizeM.click();
+    public void chooseSize(String size) {
+        WebElement sizeDropdown = driver.findElement(By.name("group[1]"));
+        Select select = new Select(sizeDropdown);
+        select.selectByVisibleText(size);
     }
 
     public void chooseQuantity(int j) {
