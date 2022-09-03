@@ -36,8 +36,8 @@ public class ShoppingSteps {
         onHomepage.chooseSweater();
     }
 
-    @And("chooses size {string} and quantity {int}")
-    public void choosesSizeAndQuantity(String arg0, int arg1) {
+    @And("chooses size {string} and quantity <{int}>")
+    public void choosesSizeAndQuantity(String arg0, int arg1) throws InterruptedException {
         SweaterPage onSweaterPage = new SweaterPage(driver);
         onSweaterPage.chooseSize(arg0);
         onSweaterPage.chooseQuantity(arg1);
@@ -72,8 +72,8 @@ public class ShoppingSteps {
         onCheckoutPage.clickOrder();
     }
 
-    @Then("user confirmed shopping and made screenshot")
-    public void userConfirmedShoppingAndMadeScreenshot() throws IOException {
+    @Then("user confirms shopping and makes screenshot")
+    public void userConfirmsShoppingAndMakesScreenshot() throws IOException {
         OrderConfirmedPage onOrderConfirmedPage = new OrderConfirmedPage(driver);
         onOrderConfirmedPage.screenShot();
         onOrderConfirmedPage.fullScreenShot();

@@ -2,10 +2,7 @@ package cos;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AddressesPage;
-import pages.HomePage;
-import pages.MyAccountPage;
-import pages.SignInPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +22,6 @@ public class Main01 {
         onSignInPage.logIn();
         driver.get("https://mystore-testlab.coderslab.pl/index.php?controller=addresses");
         AddressesPage onAddressesPage = new AddressesPage(driver);*/
-        onHomePage.checkDiscount();
+
     }
 }

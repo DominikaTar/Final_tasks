@@ -21,10 +21,11 @@ public class SweaterPage {
         select.selectByVisibleText(size);
     }
 
-    public void chooseQuantity(int j) {
+    public void chooseQuantity(int j) throws InterruptedException {
         WebElement quantityInput = driver.findElement(By.cssSelector("button.bootstrap-touchspin-up"));
-        for (int i = 0; i < j - 1; i++) {
+        for (int i = 0; i < j; i++) {
             quantityInput.click();
+            Thread.sleep(1000);
         }
     }
 

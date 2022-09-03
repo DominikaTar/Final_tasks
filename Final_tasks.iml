@@ -103,5 +103,6 @@
     <orderEntry type="library" name="Maven: ru.yandex.qatools.ashot:ashot:1.5.4" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.13.2" level="project" />
   </component>
 </module>

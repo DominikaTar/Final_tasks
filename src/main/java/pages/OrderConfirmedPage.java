@@ -1,10 +1,6 @@
 package pages;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.*;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -29,4 +25,10 @@ public class OrderConfirmedPage {
         Screenshot orderScreenShotFull = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
         ImageIO.write(orderScreenShotFull.getImage(), "PNG", new File("C:\\CL\\FullPageScreenshot.png"));
     }
+   /* public String orderReference() {
+        WebElement orderReference = driver.findElement(By.xpath("//*[@id=\"order-details\"]/ul/li[1]"));
+        String orderReferenceText = orderReference.getText();
+        System.out.println(orderReferenceText);
+        return orderReferenceText;
+    }*/
 }

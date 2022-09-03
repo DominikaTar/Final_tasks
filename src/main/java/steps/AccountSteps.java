@@ -1,6 +1,8 @@
 package steps;
 
 import io.cucumber.java.en.*;
+import net.jodah.failsafe.internal.util.Assert;
+import org.asynchttpclient.util.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.AddressesPage;
@@ -40,6 +42,7 @@ public class AccountSteps {
     public void userIsLogged() {
         HomePage onHomePage = new HomePage(driver);
         onHomePage.checkUserNameVisibility();
+
     }
 
     @And("close the browser")
@@ -69,7 +72,7 @@ public class AccountSteps {
     }
 
     @And("fills address form and clicks Save button")
-    public void fillsAddressFormAndClicksSaveButton() {
+    public void fillsAddressFormAndClicksSaveButton() throws InterruptedException {
         AddressesPage onAddressessPage = new AddressesPage(driver);
         onAddressessPage.fillFirstAddressForm();
     }

@@ -1,10 +1,10 @@
 package pages;
 
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +15,6 @@ public class HomePage {
         this.driver = driver;
     }
 
-    // nie wiem czemu nie działa....
     public void setUp() {
         System.setProperty("webdriver.chrome.driver",
                 "src/main/resources/drivers/chromedriver.exe");
@@ -30,15 +29,13 @@ public class HomePage {
         signInButton.click();
     }
 
-    public boolean checkUserNameVisibility() {
+    public void checkUserNameVisibility() {
         WebElement signInButton = driver.findElement(By.cssSelector("span.hidden-sm-down"));
         String signInText = signInButton.getAttribute("tittle");
 
         if (signInText == "Log in to your customer account") {
-            return false;
-        } else {
-            return true;
-        }
+            Assertions.fail("User is not logged");
+        } else {}
     }
 
     public void returnToHomePage() {
@@ -70,7 +67,11 @@ public class HomePage {
         if (num1 * 0.8 == num2) {
             System.out.println("Price is reduced");
         } else {
-            System.out.println("Wrong price");
+            Assertions.fail("Price is not reduced");
         }
+    }
+    public void returnToAccount() {
+        WebElement user = driver.findElement(By.cssSelector("a.account"));
+        user.click();
     }
 }

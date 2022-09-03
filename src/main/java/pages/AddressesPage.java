@@ -1,5 +1,7 @@
 package pages;
 
+import net.jodah.failsafe.internal.util.Assert;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +15,7 @@ public class AddressesPage {
         this.driver = driver;
     }
 
-    public void fillFirstAddressForm() {
+    public void fillFirstAddressForm() throws InterruptedException {
         WebElement aliasInput = driver.findElement(By.name("alias"));
         WebElement firstNameInput = driver.findElement(By.name("firstname"));
         WebElement lastNameInput = driver.findElement(By.name("lastname"));
@@ -51,10 +53,12 @@ public class AddressesPage {
 
         chooseCountry.click();
         chosenCountry.click();
+        chosenCountry.click();
+        //Thread.sleep(2000);
 
-        phoneInput.click();
+        /*phoneInput.click();
         phoneInput.clear();
-        phoneInput.sendKeys("666 666 666");
+        phoneInput.sendKeys("666 666 666");*/
 
         saveButton.click();
     }
@@ -118,24 +122,22 @@ public class AddressesPage {
     }
 
 
-    public boolean checkFirstAddress() {
+    public void checkFirstAddress() {
         WebElement information = driver.findElement(By.id("notifications"));
         String informationText = information.getAttribute("data-alert");
+
         if (informationText == "warning") {
-            return false;
-        } else {
-            return true;
-        }
+            Assertions.fail("First address didn't add");
+        } else {}
+
     }
 
-    public boolean checkAddressVisibility() {
+    public void checkAddressVisibility() {
         WebElement information = driver.findElement(By.id("notifications"));
         String informationText = information.getAttribute("data-alert");
         if (informationText == "warning") {
-            return false;
-        } else {
-            return true;
-        }
+            Assertions.fail("Address didn't add");
+        } else {}
     }
 
     public void checkAddresses(String alias, String firstName, String lastName, String address, String zipCode, String city, String phone) {
@@ -154,13 +156,12 @@ public class AddressesPage {
         deleteAddress.get(addressLength - 1).click();
     }
 
-    public boolean deletedAddressCheck() {
+    public void deletedAddressCheck() {
         WebElement information = driver.findElement(By.id("notifications"));
         String informationText = information.getAttribute("data-alert");
         if (informationText == "success") {
-            return true;
-        } else {
-            return false;
+        } else{
+            Assertions.fail("Address is deleted");
         }
     }
 }
